@@ -1,97 +1,109 @@
+import AuthRoute from "./AuthRoute";
+
 export default {
   palette: {
     primary: {
-      light: '#33c9dc',
-      main: '#00bcd4',
-      dark: '#008394',
-      contrastText: '#fff'
+      light: "#338cbd",
+      main: "#0070AD",
+      dark: "#004e79",
+      contrastText: "#fff"
     },
     secondary: {
-      light: '#ff6333',
-      main: '#ff3d00',
-      dark: '#b22a00',
-      contrastText: '#fff'
+      light: "#f2596f",
+      main: "#EF304C",
+      dark: "#a72135",
+      contrastText: "#fff"
     }
   },
   typography: {
     useNextVariants: true
   },
   form: {
-    textAlign: 'center'
+    textAlign: "center"
   },
-  image: {
-    margin: '20px auto 20px auto'
+  formItem: {
+    width: "100%"
   },
-  pageTitle: {
-    margin: '10px auto 10px auto'
+  backgroundImage: {
+    width: "100%", // 412px for samsung s10
+    marginBottom: 50
   },
   textField: {
-    margin: '10px auto 10px auto'
+    width: "70%",
+    marginBottom: 25
+  },
+  smallText: {
+    marginTop: 45,
+    display: "inline-block",
+    fontSize: "0.9rem"
   },
   button: {
     marginTop: 20,
-    position: 'relative'
+    position: "relative",
+    width: "70%",
+    padding: 14,
+    borderRadius: 28
   },
   customError: {
-    color: 'red',
-    fontSize: '0.8rem',
+    color: "red",
+    fontSize: "0.8rem",
     marginTop: 10
   },
   progress: {
-    position: 'absolute'
+    position: "absolute"
   },
   invisibleSeparator: {
-    border: 'none',
+    border: "none",
     margin: 4
   },
   visibleSeparator: {
-    width: '100%',
-    borderBottom: '1px solid rgba(0,0,0,0.1)',
+    width: "100%",
+    borderBottom: "1px solid rgba(0,0,0,0.1)",
     marginBottom: 20
   },
   paper: {
     padding: 20
   },
   profile: {
-    '& .image-wrapper': {
-      textAlign: 'center',
-      position: 'relative',
-      '& button': {
-        position: 'absolute',
-        top: '80%',
-        left: '70%'
+    "& .image-wrapper": {
+      textAlign: "center",
+      position: "relative",
+      "& button": {
+        position: "absolute",
+        top: "80%",
+        left: "70%"
       }
     },
-    '& .profile-image': {
+    "& .profile-image": {
       width: 200,
       height: 200,
-      objectFit: 'cover',
-      maxWidth: '100%',
-      borderRadius: '50%'
+      objectFit: "cover",
+      maxWidth: "100%",
+      borderRadius: "50%"
     },
-    '& .profile-details': {
-      textAlign: 'center',
-      '& span, svg': {
-        verticalAlign: 'middle'
+    "& .profile-details": {
+      textAlign: "center",
+      "& span, svg": {
+        verticalAlign: "middle"
       },
-      '& a': {
-        color: '#00bcd4'
+      "& a": {
+        color: "#00bcd4"
       }
     },
-    '& hr': {
-      border: 'none',
-      margin: '0 0 10px 0'
+    "& hr": {
+      border: "none",
+      margin: "0 0 10px 0"
     },
-    '& svg.button': {
-      '&:hover': {
-        cursor: 'pointer'
+    "& svg.button": {
+      "&:hover": {
+        cursor: "pointer"
       }
     }
   },
   buttons: {
-    textAlign: 'center',
-    '& a': {
-      margin: '20px 10px'
+    textAlign: "center",
+    "& a": {
+      margin: "20px 10px"
     }
   }
 };

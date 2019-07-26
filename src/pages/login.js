@@ -1,20 +1,27 @@
-import React, { Component } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
-import PropTypes from 'prop-types';
-import AppIcon from '../images/icon.png';
-import { Link } from 'react-router-dom';
+// Import React and React Router DOM to use components and link pages
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-// MUI Stuff
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-// Redux stuff
-import { connect } from 'react-redux';
-import { loginUser } from '../redux/actions/userActions';
+// Import PropTypes to typecheck a component
+import PropTypes from "prop-types";
 
-const styles = (theme) => ({
+// Import the BackgroundImg
+import BackgroundImg from "../images/login-register-backgroundimg.jpg";
+
+// Import Material UI library for styling the application
+import withStyles from "@material-ui/core/styles/withStyles";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+// Import Redux library to read/store data from the database
+import { connect } from "react-redux";
+import { loginUser } from "../redux/actions/userActions";
+
+// Import theme used by Material UI library
+const styles = theme => ({
   ...theme
 });
 
@@ -22,8 +29,8 @@ class login extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errors: {}
     };
   }
@@ -32,7 +39,7 @@ class login extends Component {
       this.setState({ errors: nextProps.UI.errors });
     }
   }
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     const userData = {
       email: this.state.email,
@@ -40,7 +47,7 @@ class login extends Component {
     };
     this.props.loginUser(userData, this.props.history);
   };
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -55,11 +62,12 @@ class login extends Component {
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
-        <Grid item sm>
-          <img src={AppIcon} alt="monkey" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
-            Login
-          </Typography>
+        <Grid item sm className={classes.formItem}>
+          <img
+            src={BackgroundImg}
+            alt="login-backgroundimg"
+            className={classes.backgroundImage}
+          />
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email"
@@ -73,6 +81,7 @@ class login extends Component {
               onChange={this.handleChange}
               fullWidth
             />
+            <br />
             <TextField
               id="password"
               name="password"
@@ -90,8 +99,10 @@ class login extends Component {
                 {errors.general}
               </Typography>
             )}
+            <br />
             <Button
               type="submit"
+              size="large"
               variant="contained"
               color="primary"
               className={classes.button}
@@ -103,9 +114,9 @@ class login extends Component {
               )}
             </Button>
             <br />
-            <small>
-              dont have an account ? sign up <Link to="/signup">here</Link>
-            </small>
+            <body2 className={classes.smallText}>
+              Don't have an account ? <Link to="/signup">Sign up</Link>
+            </body2>
           </form>
         </Grid>
         <Grid item sm />
@@ -114,6 +125,7 @@ class login extends Component {
   }
 }
 
+// Typcheck components
 login.propTypes = {
   classes: PropTypes.object.isRequired,
   loginUser: PropTypes.func.isRequired,
@@ -121,15 +133,18 @@ login.propTypes = {
   UI: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+// Select user, ui from the store to export to other files later
+const mapStateToProps = state => ({
   user: state.user,
   UI: state.UI
 });
 
+// Select loginUser from the store to export to other files later
 const mapActionsToProps = {
   loginUser
 };
 
+// Export data
 export default connect(
   mapStateToProps,
   mapActionsToProps
