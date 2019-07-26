@@ -1,5 +1,3 @@
-import AuthRoute from "./AuthRoute";
-
 export default {
   palette: {
     primary: {
@@ -33,7 +31,7 @@ export default {
     marginBottom: 25
   },
   smallText: {
-    marginTop: 45,
+    margin: 45,
     display: "inline-block",
     fontSize: "0.9rem"
   },

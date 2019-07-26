@@ -1,20 +1,27 @@
-import React, { Component } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
-import PropTypes from 'prop-types';
-import AppIcon from '../images/icon.png';
-import { Link } from 'react-router-dom';
+// Import React and React Router DOM to use components and link pages
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-// MUI Stuff
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-// Redux stuff
-import { connect } from 'react-redux';
-import { signupUser } from '../redux/actions/userActions';
+// Import PropTypes to typecheck a component
+import PropTypes from "prop-types";
 
-const styles = (theme) => ({
+// Import the BackgroundImg
+import BackgroundImg from "../images/login-register-backgroundimg.jpg";
+
+// Import Material UI library for styling the application
+import withStyles from "@material-ui/core/styles/withStyles";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+// Import Redux library to read/store data from the database
+import { connect } from "react-redux";
+import { signupUser } from "../redux/actions/userActions";
+
+// Import theme used by Material UI library
+const styles = theme => ({
   ...theme
 });
 
@@ -22,10 +29,10 @@ class signup extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      handle: '',
+      email: "",
+      password: "",
+      confirmPassword: "",
+      handle: "",
       errors: {}
     };
   }
@@ -34,7 +41,7 @@ class signup extends Component {
       this.setState({ errors: nextProps.UI.errors });
     }
   }
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     this.setState({
       loading: true
@@ -47,7 +54,7 @@ class signup extends Component {
     };
     this.props.signupUser(newUserData, this.props.history);
   };
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -63,10 +70,11 @@ class signup extends Component {
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} alt="monkey" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
-            SignUp
-          </Typography>
+          <img
+            src={BackgroundImg}
+            alt="signin-backgroundimg"
+            className={classes.backgroundImage}
+          />
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email"
@@ -134,9 +142,9 @@ class signup extends Component {
               )}
             </Button>
             <br />
-            <small>
-              Already have an account ? Login <Link to="/login">here</Link>
-            </small>
+            <body2 className={classes.smallText}>
+              Already have an account ? <Link to="/login">Log in</Link>
+            </body2>
           </form>
         </Grid>
         <Grid item sm />
@@ -152,7 +160,7 @@ signup.propTypes = {
   signupUser: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
   UI: state.UI
 });
