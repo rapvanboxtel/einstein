@@ -16,33 +16,88 @@ import Notifications from "./Notifications";
 // Import Material UI library for styling the application
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import withStyles from "@material-ui/core/styles/withStyles";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import NotificationsIcon from "@material-ui/icons/NotificationsNone";
+import EventIcon from "@material-ui/icons/EventNote";
+import MenuIcon from "@material-ui/icons/Menu";
+import PersonIcon from "@material-ui/icons/PersonOutline";
+import PeopleIcon from "@material-ui/icons/PeopleOutline";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 // Import Material UI library for icons
 import HomeIcon from "@material-ui/icons/Home";
+
+const styles = {
+  bottomNav: {
+    position: "fixed",
+    bottom: 0,
+    width: "100%",
+    zIndex: "999",
+    borderTop: "1px solid #DADDE1",
+    height: 70
+  },
+  navAction: {
+    minWidth: "40px",
+    maxWidth: "70px"
+  }
+};
 
 //Navbar component to define when the certain Navbar will display
 class Navbar extends Component {
   render() {
     // Check if user is logged in
-    const { authenticated } = this.props;
+    const { classes, authenticated } = this.props;
+
     return (
       // If user is logged in show a Navbar
       // Otherwise don't
       <nav>
         {authenticated ? (
-          <AppBar>
-            <Toolbar className="nav-container">
-              <Fragment>
-                <PostScream />
-                <Link to="/">
-                  <MyButton tip="Home">
-                    <HomeIcon />
-                  </MyButton>
-                </Link>
-                <Notifications />
-              </Fragment>
-            </Toolbar>
-          </AppBar>
+          <div>
+            <AppBar>
+              <Toolbar className="nav-container">
+                <Fragment>
+                  <PostScream />
+                  <Link to="/">
+                    <MyButton tip="Home">
+                      <HomeIcon />
+                    </MyButton>
+                  </Link>
+                  <Notifications />
+                </Fragment>
+              </Toolbar>
+            </AppBar>
+            <BottomNavigation className={classes.bottomNav}>
+              <BottomNavigationAction
+                component={Link}
+                to="/login"
+                className={classes.navAction}
+                icon={<DashboardIcon />}
+              />
+              <BottomNavigationAction
+                className={classes.navAction}
+                icon={<PeopleIcon />}
+              />
+              <BottomNavigationAction
+                className={classes.navAction}
+                icon={<PersonIcon />}
+              />
+              <BottomNavigationAction
+                className={classes.navAction}
+                icon={<EventIcon />}
+              />
+              <BottomNavigationAction
+                className={classes.navAction}
+                icon={<NotificationsIcon />}
+              />
+              <BottomNavigationAction
+                className={classes.navAction}
+                icon={<MenuIcon />}
+              />
+            </BottomNavigation>
+          </div>
         ) : (
           <p />
         )}
@@ -62,4 +117,4 @@ const mapStateToProps = state => ({
 });
 
 // Export data
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps)(withStyles(styles)(Navbar));

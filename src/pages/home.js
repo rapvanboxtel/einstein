@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 // Import React components and utility
 import Scream from "../components/scream/Scream";
-//import Profile from "../components/profile/Profile";
+import Profile from "../components/profile/Profile";
 import ScreamSkeleton from "../util/ScreamSkeleton";
 
 // Import Redux library to read/store data from the database
@@ -30,9 +30,9 @@ class home extends Component {
         <Grid item sm={8} xs={12}>
           {recentScreamsMarkup}
         </Grid>
-        {/* <Grid item sm={4} xs={12}>
+        <Grid item sm={4} xs={12}>
           <Profile />
-        </Grid> */}
+        </Grid>
       </Grid>
     );
   }
