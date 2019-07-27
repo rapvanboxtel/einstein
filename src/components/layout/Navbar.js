@@ -24,7 +24,7 @@ import EventIcon from "@material-ui/icons/EventNote";
 import MenuIcon from "@material-ui/icons/Menu";
 import PersonIcon from "@material-ui/icons/PersonOutline";
 import PeopleIcon from "@material-ui/icons/PeopleOutline";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+import DashboardIcon from "@material-ui/icons/DashboardOutlined";
 
 // Import Material UI library for icons
 import HomeIcon from "@material-ui/icons/Home";
@@ -59,7 +59,6 @@ class Navbar extends Component {
             <AppBar>
               <Toolbar className="nav-container">
                 <Fragment>
-                  <PostScream />
                   <Link to="/">
                     <MyButton tip="Home">
                       <HomeIcon />
@@ -72,7 +71,7 @@ class Navbar extends Component {
             <BottomNavigation className={classes.bottomNav}>
               <BottomNavigationAction
                 component={Link}
-                to="/login"
+                to="/"
                 className={classes.navAction}
                 icon={<DashboardIcon />}
               />

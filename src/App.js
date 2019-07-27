@@ -67,11 +67,15 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <Navbar />
-            <div className="container">
+            <div className="container-login">
               <Switch>
-                <Route exact path="/" component={home} />
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
+              </Switch>
+            </div>
+            <div className="container-app">
+              <Switch>
+                <Route exact path="/" component={home} />
                 <Route exact path="/users/:handle" component={user} />
                 <Route
                   exact
