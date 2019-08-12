@@ -26,8 +26,14 @@ import PersonIcon from "@material-ui/icons/PersonOutline";
 import PeopleIcon from "@material-ui/icons/PeopleOutline";
 import DashboardIcon from "@material-ui/icons/DashboardOutlined";
 
-// Import Material UI library for icons
-import HomeIcon from "@material-ui/icons/Home";
+import IconButton from "@material-ui/core/IconButton";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Avatar from "@material-ui/core/Avatar";
+import Grid from "@material-ui/core/Grid";
+
+import InputBase from "@material-ui/core/InputBase";
+import SearchIcon from "@material-ui/icons/Search";
+import ChatIcon from "@material-ui/icons/Chat";
 
 const styles = {
   bottomNav: {
@@ -41,6 +47,36 @@ const styles = {
   navAction: {
     minWidth: "40px",
     maxWidth: "70px"
+  },
+  avatar: {
+    width: 30,
+    height: 30
+  },
+  search: {
+    position: "relative",
+    marginLeft: 0,
+    width: "98%",
+    height: "28px",
+    marginLeft: "2%",
+    borderBottom: "1px solid white"
+  },
+  searchIcon: {
+    width: "0.9em",
+    height: "0.9em"
+  },
+  searchIconWrapper: {
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  searchInput: {
+    marginLeft: 25,
+    width: "calc(100% - 30px)",
+    height: "27px",
+    color: "white"
   }
 };
 
@@ -48,7 +84,14 @@ const styles = {
 class Navbar extends Component {
   render() {
     // Check if user is logged in
-    const { classes, authenticated } = this.props;
+
+    const {
+      classes,
+      user: {
+        credentials: { imageUrl, handle },
+        authenticated
+      }
+    } = this.props;
 
     return (
       // If user is logged in show a Navbar
@@ -58,16 +101,31 @@ class Navbar extends Component {
           <div>
             <AppBar>
               <Toolbar className="nav-container">
-                <Fragment>
-                  <Link to="/">
-                    <MyButton tip="Home">
-                      <HomeIcon />
-                    </MyButton>
-                  </Link>
-                  <Notifications />
-                </Fragment>
+                <Grid>
+                  <Avatar
+                    alt="Profile Image"
+                    src={imageUrl}
+                    className={classes.avatar}
+                    component={Link}
+                    to={`/users/${handle}`}
+                  />
+                </Grid>
+                <div className={classes.search}>
+                  <div className={classes.searchIconWrapper}>
+                    <SearchIcon className={classes.searchIcon} />
+                  </div>
+                  <InputBase
+                    placeholder="Search"
+                    inputProps={{ "aria-label": "search" }}
+                    className={classes.searchInput}
+                  />
+                </div>
+                <IconButton color="inherit">
+                  <ChatIcon />
+                </IconButton>
               </Toolbar>
             </AppBar>
+
             <BottomNavigation className={classes.bottomNav}>
               <BottomNavigationAction
                 component={Link}
@@ -80,6 +138,8 @@ class Navbar extends Component {
                 icon={<PeopleIcon />}
               />
               <BottomNavigationAction
+                component={Link}
+                to="/user/:handle"
                 className={classes.navAction}
                 icon={<PersonIcon />}
               />
@@ -87,10 +147,7 @@ class Navbar extends Component {
                 className={classes.navAction}
                 icon={<EventIcon />}
               />
-              <BottomNavigationAction
-                className={classes.navAction}
-                icon={<NotificationsIcon />}
-              />
+              <Notifications />
               <BottomNavigationAction
                 className={classes.navAction}
                 icon={<MenuIcon />}
@@ -107,12 +164,14 @@ class Navbar extends Component {
 
 // Typcheck component authenticated
 Navbar.propTypes = {
+  user: PropTypes.object.isRequired,
   authenticated: PropTypes.bool.isRequired
 };
 
-// Select authenticated from the store to export to other files later
+// Select authenticated, user from the store to export to other files later
 const mapStateToProps = state => ({
-  authenticated: state.user.authenticated
+  authenticated: state.user.authenticated,
+  user: state.user
 });
 
 // Export data

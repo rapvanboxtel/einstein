@@ -31,6 +31,7 @@ import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import user from "./pages/user";
+import profile from "./pages/profile";
 
 // Create Material UI theme
 const theme = createMuiTheme(themeObject);
@@ -65,6 +66,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
+
           <Router>
             <Navbar />
             <div className="container-login">
@@ -82,9 +84,11 @@ class App extends Component {
                   path="/users/:handle/scream/:screamId"
                   component={user}
                 />
+                <Route exact path="/user/:handle" component={profile} />
               </Switch>
             </div>
           </Router>
+
         </Provider>
       </MuiThemeProvider>
     );

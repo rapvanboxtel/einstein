@@ -1,13 +1,18 @@
+// Import React and React Router DOM to use components and link pages
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import Scream from '../components/scream/Scream';
-import StaticProfile from '../components/profile/StaticProfile';
-import Grid from '@material-ui/core/Grid';
 
+// Import PropTypes to typecheck a component
+import PropTypes from 'prop-types';
+
+// Import React components and utility
 import ScreamSkeleton from '../util/ScreamSkeleton';
 import ProfileSkeleton from '../util/ProfileSkeleton';
+import Scream from '../components/scream/Scream';
+import StaticProfile from '../components/profile/StaticProfile';
+import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 
+// Import Redux library to read/store data from the database
 import { connect } from 'react-redux';
 import { getUserData } from '../redux/actions/dataActions';
 
@@ -52,15 +57,15 @@ class user extends Component {
 
     return (
       <Grid container spacing={16}>
-        <Grid item sm={8} xs={12}>
-          {screamsMarkup}
-        </Grid>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (
             <ProfileSkeleton />
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}
+        </Grid>
+        <Grid item sm={8} xs={12}>
+          {screamsMarkup}
         </Grid>
       </Grid>
     );

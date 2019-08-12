@@ -16,7 +16,8 @@ body {
   max-width: auto;
 }
 .nav-container {
-  margin: auto;
+  width: 93.5%;
+  padding: 0 3.25%;
 }
 .nav-container svg {
   color: #fff;

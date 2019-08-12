@@ -35,8 +35,14 @@ import { connect } from "react-redux";
 
 const styles = {
   cardContainer: {
-    width: "93%",
-    margin: "15px auto"
+    width: "100%",
+    borderBottomStyle: "solid",
+    borderBottomColor: "#DADDE1",
+    borderBottomWidth: "15px"
+  },
+  card: {
+    borderRadius: "0px",
+    boxShadow: "none"
   },
   screamDialog: {
     left: "85% !important"
@@ -77,6 +83,8 @@ class Scream extends Component {
                 alt="Profile image"
                 src={userImage}
                 className={classes.avatar}
+                component={Link}
+                to={`/users/${userHandle}`}
               />
             }
             action={
