@@ -110,14 +110,14 @@ class Scream extends Component {
 
           <CardActions disableSpacing>
             <LikeButton screamId={screamId} />
-            <span>{likeCount} Likes</span>
+            <span>{likeCount} Kudos</span>
 
             <ScreamDialog
               screamId={screamId}
               userHandle={userHandle}
               openDialog={this.props.openDialog}
             />
-            <span>{commentCount} comments</span>
+            <span>{commentCount} Comments</span>
 
             {deleteButton}
 

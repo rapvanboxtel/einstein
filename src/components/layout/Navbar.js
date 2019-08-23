@@ -77,7 +77,7 @@ const styles = {
     width: "calc(100% - 30px)",
     height: "27px",
     color: "white"
-  }
+  },
 };
 
 //Navbar component to define when the certain Navbar will display
@@ -107,7 +107,7 @@ class Navbar extends Component {
                     src={imageUrl}
                     className={classes.avatar}
                     component={Link}
-                    to={`/users/${handle}`}
+                    to={`/profile/${handle}`}
                   />
                 </Grid>
                 <div className={classes.search}>
@@ -139,7 +139,7 @@ class Navbar extends Component {
               />
               <BottomNavigationAction
                 component={Link}
-                to="/user/:handle"
+                to={`/profile/${handle}`}
                 className={classes.navAction}
                 icon={<PersonIcon />}
               />

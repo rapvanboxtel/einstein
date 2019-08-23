@@ -104,10 +104,10 @@ class PostScream extends Component {
               <TextField
                 name="body"
                 type="text"
-                label="SCREAM!!"
+                label="Post"
                 multiline
                 rows="3"
-                placeholder="Scream at your fellow apes"
+                placeholder="Share something with your colleagues"
                 error={errors.body ? true : false}
                 helperText={errors.body}
                 className={classes.textField}
