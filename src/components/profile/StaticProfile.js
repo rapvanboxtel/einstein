@@ -61,6 +61,11 @@ const StaticProfile = (props) => {
           <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
         </div>
       </div>
+      <div className={classes.timeline}>
+          <p className={classes.timelinetext}>
+            Timeline
+          </p>
+      </div>
     </Paper>
   );
 };

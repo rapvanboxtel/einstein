@@ -60,9 +60,23 @@ export default {
     marginBottom: 20
   },
   paper: {
-    padding: 20
+    width: "110%",
+  },
+  timeline: {
+    backgroundColor: "#F2F3F5",
+    padding: "2px 16px",
+    
+    borderTopStyle: "solid",
+    borderTopColor: "#DADDE1",
+    borderTopWidth: "15px"
+  },
+  timelinetext: {
+    color: "#828282",
+    fontSize: "16px",
+    fontWeight: "400"
   },
   profile: {
+    padding: 20,
     "& .image-wrapper": {
       textAlign: "center",
       position: "relative",

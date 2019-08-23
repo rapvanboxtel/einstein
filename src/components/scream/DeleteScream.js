@@ -40,6 +40,7 @@ class DeleteScream extends Component {
     return (
       <Fragment>
         <MyButton
+          tip=""
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >

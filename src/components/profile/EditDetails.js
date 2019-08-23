@@ -67,7 +67,7 @@ class EditDetails extends Component {
     return (
       <Fragment>
         <MyButton
-          tip="Edit Details"
+          tip=""
           onClick={this.handleOpen}
           btnClassName={classes.button}
         >

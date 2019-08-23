@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Route, Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
@@ -62,7 +63,7 @@ class Profile extends Component {
                 onChange={this.handleImageChange}
               />
               <MyButton
-                tip="Edit profile picture"
+                tip=""
                 onClick={this.handleEditPicture}
                 btnClassName="button"
               >
@@ -101,41 +102,19 @@ class Profile extends Component {
               <CalendarToday color="primary" />{' '}
               <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
-            <MyButton 
-              tip="Logout" 
-              onClick={this.handleLogout} 
-              component={Link} 
-              to="/login"
-            >
+            <MyButton tip="" onClick={this.handleLogout} >
               <KeyboardReturn color="primary" />
             </MyButton>
             <EditDetails />
           </div>
-        </Paper>
-      ) : (
-        <Paper className={classes.paper}>
-          <Typography variant="body2" align="center">
-            No profile found, please login again
-          </Typography>
-          <div className={classes.buttons}>
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              to="/login"
-            >
-              Login
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              component={Link}
-              to="/signup"
-            >
-              Signup
-            </Button>
+          <div className={classes.timeline}>
+              <p className={classes.timelinetext}>
+                Timeline
+              </p>
           </div>
         </Paper>
+      ) : (
+        <Redirect to="/login" />
       )
     ) : (
       <ProfileSkeleton />

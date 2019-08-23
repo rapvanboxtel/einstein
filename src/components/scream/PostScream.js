@@ -92,7 +92,7 @@ class PostScream extends Component {
           maxWidth="sm"
         >
           <MyButton
-            tip="Close"
+            tip=""
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
