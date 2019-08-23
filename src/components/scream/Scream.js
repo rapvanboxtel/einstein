@@ -44,9 +44,6 @@ const styles = {
     borderRadius: "0px",
     boxShadow: "none"
   },
-  screamDialog: {
-    left: "85% !important"
-  }
 };
 
 class Scream extends Component {
@@ -115,20 +112,18 @@ class Scream extends Component {
             <LikeButton screamId={screamId} />
             <span>{likeCount} Likes</span>
 
-            <MyButton tip="comments">
-              <ChatIcon color="primary" />
-            </MyButton>
-            <span>{commentCount} comments</span>
-
             <ScreamDialog
-              className={classes.screamDialog}
               screamId={screamId}
               userHandle={userHandle}
               openDialog={this.props.openDialog}
             />
+            <span>{commentCount} comments</span>
+
+            {deleteButton}
+
           </CardActions>
 
-          {/* {deleteButton} */}
+          
         </Card>
       </div>
     );
