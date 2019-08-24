@@ -29,9 +29,7 @@ class home extends Component {
     );
     return (
       <Grid container>
-        <Grid item>
-          {recentScreamsMarkup}
-        </Grid>
+        {recentScreamsMarkup}
         <PostScream />
       </Grid>
     );

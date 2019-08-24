@@ -5,6 +5,9 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Send from '@material-ui/icons/Send';
+import IconButton from "@material-ui/core/IconButton";
 // Redux stuff
 import { connect } from 'react-redux';
 import { submitComment } from '../../redux/actions/dataActions';
@@ -41,29 +44,34 @@ class CommentForm extends Component {
     const errors = this.state.errors;
 
     const commentFormMarkup = authenticated ? (
-      <Grid item sm={12} style={{ textAlign: 'center' }}>
+      <Grid item className={classes.comment}>
         <form onSubmit={this.handleSubmit}>
           <TextField
             name="body"
             type="text"
-            label="Comment on scream"
             error={errors.comment ? true : false}
             helperText={errors.comment}
             value={this.state.body}
             onChange={this.handleChange}
-            fullWidth
-            className={classes.textField}
+            className={classes.postComment}
+            id="outlined-full-width"
+            placeholder="Write a comment..."
+            variant="outlined"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                  >
+                    <Send />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            className={classes.button}
-          >
-            Submit
-          </Button>
         </form>
-        <hr className={classes.visibleSeparator} />
       </Grid>
     ) : null;
     return commentFormMarkup;

@@ -103,7 +103,7 @@ class Scream extends Component {
           />
 
           <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body2" component="p">
               {body}
             </Typography>
           </CardContent>

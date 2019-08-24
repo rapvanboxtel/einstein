@@ -9,14 +9,17 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
   ...theme,
+  comment: {
+    width: 'calc(100% - 50px)'
+  },
   commentImage: {
-    maxWidth: '100%',
-    height: 100,
+    width: 40,
+    height: 40,
     objectFit: 'cover',
     borderRadius: '50%'
   },
   commentData: {
-    marginLeft: 20
+    marginLeft: 10
   }
 });
 
@@ -24,39 +27,37 @@ class Comments extends Component {
   render() {
     const { comments, classes } = this.props;
     return (
-      <Grid container>
+      <Grid container className={classes.commentsContainer}>
         {comments.map((comment, index) => {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
             <Fragment key={createdAt}>
-              <Grid item sm={12}>
-                <Grid container>
-                  <Grid item sm={2}>
+                <Grid container >
+                  <Grid item>
                     <img
                       src={userImage}
                       alt="comment"
                       className={classes.commentImage}
                     />
                   </Grid>
-                  <Grid item sm={9}>
+                  <Grid item className={classes.comment}>
                     <div className={classes.commentData}>
                       <Typography
-                        variant="h5"
+                        variant="body2"
                         component={Link}
                         to={`/users/${userHandle}`}
                         color="primary"
                       >
                         {userHandle}
                       </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        {dayjs(createdAt).fromNow()}
                       </Typography>
                       <hr className={classes.invisibleSeparator} />
-                      <Typography variabnt="body1">{body}</Typography>
+                      <Typography variant="body2" component="p">{body}</Typography>
                     </div>
                   </Grid>
                 </Grid>
-              </Grid>
               {index !== comments.length - 1 && (
                 <hr className={classes.visibleSeparator} />
               )}

@@ -55,9 +55,11 @@ export default {
     margin: 4
   },
   visibleSeparator: {
-    width: "100%",
-    borderBottom: "1px solid rgba(0,0,0,0.1)",
-    marginBottom: 20
+    width: '100%',
+    height: '1px',
+    backgroundColor: 'rgba(230, 230, 230, 1)',
+    margin: '15px 0px',
+    borderWidth: '0px'
   },
   paper: {
     width: "110%",
@@ -74,6 +76,21 @@ export default {
     color: "#828282",
     fontSize: "16px",
     fontWeight: "400"
+  },
+  comment: {
+    width: '90%',
+    backgroundColor: 'white',
+    position: 'absolute',
+    left: '5%',
+    bottom: '0%',
+    paddingTop: '5%',
+    paddingBottom: '5%'
+  },
+  commentsContainer: {
+    paddingBottom: '100px'
+  },
+  postComment: {
+    width: '100%'
   },
   profile: {
     padding: 20,

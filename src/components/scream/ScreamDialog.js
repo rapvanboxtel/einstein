@@ -23,18 +23,17 @@ import { getScream, clearErrors } from "../../redux/actions/dataActions";
 
 const styles = theme => ({
   ...theme,
-  profileImage: {
-    maxWidth: 200,
-    height: 200,
-    borderRadius: "50%",
-    objectFit: "cover"
-  },
   dialogContent: {
-    padding: 20
+    padding: '5%',
+  },
+  dialogContainer: {
+    margin: '5%',
+    borderRadius: '20px !important'
   },
   closeButton: {
     position: "absolute",
-    left: "82.5%"
+    left: "86.5%",
+    top: '5px'
   },
   expandButton: {
     position: "absolute",
@@ -98,35 +97,14 @@ class ScreamDialog extends Component {
         <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={16}>
-        <Grid item sm={5}>
-          <img src={userImage} alt="Profile" className={classes.profileImage} />
-        </Grid>
-        <Grid item sm={7}>
-          <Typography
-            component={Link}
-            color="primary"
-            variant="h5"
-            to={`/users/${userHandle}`}
-          >
-            @{userHandle}
-          </Typography>
-          <hr className={classes.invisibleSeparator} />
-          <Typography variant="body2" color="textSecondary">
-            {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
-          </Typography>
-          <hr className={classes.invisibleSeparator} />
-          <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId} />
-          <span>{likeCount} likes</span>
-          <MyButton tip="">
-            <ChatIcon color="primary" />
-          </MyButton>
+      <Grid container>
+        <Grid>
+          {/* <span>{likeCount} likes </span> */}
           <span>{commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
-        <CommentForm screamId={screamId} />
         <Comments comments={comments} />
+        <CommentForm screamId={screamId} />
       </Grid>
     );
     return (
@@ -138,10 +116,10 @@ class ScreamDialog extends Component {
           <ChatIcon color="primary" />
         </MyButton>
         <Dialog
+          fullScreen
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth
-          maxWidth="sm"
+          className={classes.dialogContainer}
         >
           <MyButton
             tip=""

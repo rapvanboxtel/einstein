@@ -11,57 +11,75 @@ import withStyles from '@material-ui/core/styles/withStyles';
 const styles = (theme) => ({
   ...theme,
   card: {
-    display: 'flex',
-    marginBottom: 20
-  },
-  cardContent: {
+    boxShadow: 'none',
     width: '100%',
-    flexDirection: 'column',
-    padding: 25
+    borderBottomStyle: 'solid',
+    borderBottomColor: '#DADDE1',
+    borderBottomWidth: '15px'
   },
-  cover: {
-    minWidth: 200,
-    objectFit: 'cover'
+  info: {
+    padding: '16px',
+    display: 'inline-block',
+    width: 'calc(100% - 32px)'
+  },
+  userinfo: {
+    width: '80%',
+    display: 'inline-block'
+  },
+  img: {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    float: 'left'
   },
   handle: {
-    width: 60,
-    height: 18,
+    width: '17%',
+    height: 13,
+    margin: '6px 72.5% 5px 5.5%',
     backgroundColor: theme.palette.primary.main,
-    marginBottom: 7
+    float: 'left'
   },
   date: {
-    height: 14,
-    width: 100,
+    height: 11,
+    width: 95,
     backgroundColor: 'rgba(0,0,0, 0.3)',
-    marginBottom: 10
+    marginLeft: '5.5%',
+    float: 'left'
+  },
+  content: {
+    padding: '8px 16px 24px 16px'
   },
   fullLine: {
-    height: 15,
-    width: '90%',
-    backgroundColor: 'rgba(0,0,0, 0.6)',
+    height: 11,
+    width: '96%',
+    backgroundColor: 'rgba(0,0,0, 0.4)',
     marginBottom: 10
   },
   halfLine: {
-    height: 15,
-    width: '50%',
-    backgroundColor: 'rgba(0,0,0, 0.6)',
-    marginBottom: 10
+    height: 11,
+    width: '56%',
+    backgroundColor: 'rgba(0,0,0, 0.4)'
   }
 });
 
 const ScreamSkeleton = (props) => {
   const { classes } = props;
 
-  const content = Array.from({ length: 5 }).map((item, index) => (
+  const content = Array.from({ length: 4 }).map((index) => (
     <Card className={classes.card} key={index}>
-      <CardMedia className={classes.cover} image={NoImg} />
-      <CardContent className={classes.cardContent}>
-        <div className={classes.handle} />
-        <div className={classes.date} />
-        <div className={classes.fullLine} />
-        <div className={classes.fullLine} />
-        <div className={classes.halfLine} />
-      </CardContent>
+
+        <div className={classes.info}>
+          <CardMedia className={classes.img} image={NoImg} />
+          <div className={classes.userinfo}>
+            <div className={classes.handle} />
+            <div className={classes.date} />
+          </div>
+        </div>
+        <div className={classes.content}>
+          <div className={classes.fullLine} />
+          <div className={classes.fullLine} />
+          <div className={classes.halfLine} />
+        </div>
     </Card>
   ));
 
