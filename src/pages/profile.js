@@ -59,11 +59,8 @@ class user extends Component {
 
     return (
       <Grid container>
-   
           <Profile />
- 
           {screamsMarkup}
-
       </Grid>
     );
   }

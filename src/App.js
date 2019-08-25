@@ -32,6 +32,7 @@ import login from "./pages/login";
 import signup from "./pages/signup";
 import user from "./pages/user";
 import profile from "./pages/profile";
+import notifications from "./pages/notifications";
 
 // Create Material UI theme
 const theme = createMuiTheme(themeObject);
@@ -58,34 +59,51 @@ if (token) {
   }
 }
 
+const styles = {
+  appWrapper: {
+    position: "fixed",
+    left: '50%',
+    transform: 'translateX(-50%)',
+    bottom: 0,
+    width: '100%',
+    maxWidth: "500px",
+  }
+};
+
 // App Component that routes all four pages
 // You can acces all four pages if not logged in
 // When logged in you can't acces /login and /signup (because you are already logged in)
 class App extends Component {
   render() {
+
+    const { classes } = this.props;
+
     return (
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
 
           <Router>
-            <Navbar />
-            <div className="container-login">
-              <Switch>
-                <AuthRoute exact path="/login" component={login} />
-                <AuthRoute exact path="/signup" component={signup} />
-              </Switch>
-            </div>
-            <div className="container-app">
-              <Switch>
-                <Route exact path="/" component={home} />
-                <Route exact path="/users/:handle" component={user} />
-                <Route
-                  exact
-                  path="/users/:handle/scream/:screamId"
-                  component={user}
-                />
-                <Route exact path="/profile/:handle" component={profile} />
-              </Switch>
+            <div className="appWrapper">
+              <Navbar />
+              <div className="container-login">
+                <Switch>
+                  <AuthRoute exact path="/login" component={login} />
+                  <AuthRoute exact path="/signup" component={signup} />
+                </Switch>
+              </div>
+              <div className="container-app">
+                <Switch>
+                  <Route exact path="/" component={home} />
+                  <Route exact path="/users/:handle" component={user} />
+                  <Route
+                    exact
+                    path="/users/:handle/scream/:screamId"
+                    component={user}
+                  />
+                  <Route exact path="/profile/:handle" component={profile} />
+                  <Route exact path="/notifications" component={notifications} />
+                </Switch>
+              </div>
             </div>
           </Router>
 

@@ -62,7 +62,8 @@ export default {
     borderWidth: '0px'
   },
   paper: {
-    width: "110%",
+    width: "100%",
+    boxShadow: 'none'
   },
   timeline: {
     backgroundColor: "#F2F3F5",

@@ -1,39 +1,64 @@
-import React, { Component, Fragment } from "react";
+// Import React and React Router DOM to use components and link pages
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
+// Import Dayjs to show when post is created
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+
+// Import PropTypes to typecheck a component
 import PropTypes from "prop-types";
-// MUI stuff
-import Menu from "@material-ui/core/Menu";
+
+// Import Material UI library for styling the application
 import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import Badge from "@material-ui/core/Badge";
-
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import NotificationsIcon from "@material-ui/icons/NotificationsNone";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-// Icons
+// Import Material UI library for icons
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ChatIcon from "@material-ui/icons/Chat";
-// Redux
+import CommentIcon from "@material-ui/icons/ModeComment";
+
+// Import Redux library to read/store data from the database
 import { connect } from "react-redux";
 import { markNotificationsRead } from "../../redux/actions/userActions";
 
-const styles = {
-  bottomNav: {
-    position: "fixed",
-    bottom: 0,
-    width: "100%",
-    zIndex: "999",
-    borderTop: "1px solid #DADDE1",
-    height: 70
+import CardHeader from "@material-ui/core/CardHeader";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+
+const styles = (theme) => ({
+  ...theme,
+  notificationContainer: {
+    width: '100%',
+    height: '300px'
   },
-  navAction: {
-    minWidth: "40px",
-    maxWidth: "70px"
+  notification: {
+    width: 'calc(100% - 32px)',
+    padding: '32px 16px'
+  },
+  notificationSender: {
+    fontWeight: 500,
+    display: 'inline-block'
+  },
+  notificationIcon: {
+    position: 'relative',
+    float: 'right'
+  },
+  notificationContent: {
+    maxWidth: '85%',
+    display: 'inline-block'
+  },
+  visibleSeparatorNotifications: {
+    width: '%',
+    height: '1px',
+    backgroundColor: 'rgba(230, 230, 230, 1)',
+    margin: '0px',
+    borderWidth: '0px'
   }
-};
+});
 
 class Notifications extends Component {
   state = {
@@ -91,21 +116,39 @@ class Notifications extends Component {
             not.type === "like" ? (
               <FavoriteIcon color={iconColor} style={{ marginRight: 10 }} />
             ) : (
-              <ChatIcon color={iconColor} style={{ marginRight: 10 }} />
+              <CommentIcon color={iconColor} style={{ marginRight: 10 }} />
             );
 
           return (
-            <MenuItem key={not.createdAt} onClick={this.handleClose}>
-              {icon}
-              <Typography
+            <div>
+              <Typography 
+                key={not.createdAt} 
+                onClick={this.handleClose} 
+                className={classes.notification}
                 component={Link}
-                color="default"
-                variant="body1"
                 to={`/users/${not.recipient}/scream/${not.screamId}`}
               >
-                {not.sender} {verb} your scream {time}
+                <Typography
+                  color="default"
+                  variant="body1"
+                  className={classes.notificationContent}
+                >
+                  <Typography
+                    component={Link}
+                    color="primary"
+                    variant="body1"
+                    to={`/users/${not.sender}`}
+                    className={classes.notificationSender}
+                  >
+                    {not.sender} 
+                  </Typography> {verb} your post {time}
+                </Typography>
+                <div className={classes.notificationIcon}>
+                  {icon}
+                </div>
               </Typography>
-            </MenuItem>
+              <hr className={classes.visibleSeparatorNotifications} />
+            </div>
           );
         })
       ) : (
@@ -115,24 +158,9 @@ class Notifications extends Component {
       );
 
     return (
-      <Fragment>
-        <BottomNavigationAction
-          aria-owns={anchorEl ? "simple-menu" : undefined}
-          aria-haspopup="true"
-          onClick={this.handleOpen}
-          className={classes.navAction}
-          icon={<NotificationsIcon />}
-        />
-
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-          onEntered={this.onMenuOpened}
-        >
-          {notificationsMarkup}
-        </Menu>
-      </Fragment>
+      <div classname={classes.notificationContainer}>
+        {notificationsMarkup}
+      </div>
     );
   }
 }

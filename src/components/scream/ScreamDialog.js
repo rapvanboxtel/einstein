@@ -100,7 +100,7 @@ class ScreamDialog extends Component {
       <Grid container>
         <Grid>
           {/* <span>{likeCount} likes </span> */}
-          <span>{commentCount} comments</span>
+          <span>{likeCount} likes & {commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
         <Comments comments={comments} />

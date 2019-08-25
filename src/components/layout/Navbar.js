@@ -38,8 +38,11 @@ import ChatIcon from "@material-ui/icons/Chat";
 const styles = {
   bottomNav: {
     position: "fixed",
+    left: '50%',
+    transform: 'translateX(-50%)',
     bottom: 0,
-    width: "100%",
+    width: '100%',
+    maxWidth: "500px",
     zIndex: "999",
     borderTop: "1px solid #DADDE1",
     height: 70
@@ -78,6 +81,12 @@ const styles = {
     height: "27px",
     color: "white"
   },
+  navAppbar: {
+    // width: 100%;
+    // max-width: 500px;
+    // left: 50%;
+    // transform: translateX(-50%);
+  }
 };
 
 //Navbar component to define when the certain Navbar will display
@@ -99,8 +108,8 @@ class Navbar extends Component {
       <nav>
         {authenticated ? (
           <div>
-            <AppBar>
-              <Toolbar className="nav-container">
+            <AppBar style={{width: '100%', maxWidth: '500px', left: '50%', transform: 'translateX(-50%)'}}>
+              <Toolbar>
                 <Grid>
                   <Avatar
                     alt="Profile Image"
@@ -147,9 +156,16 @@ class Navbar extends Component {
                 className={classes.navAction}
                 icon={<EventIcon />}
               />
-              <Notifications />
               <BottomNavigationAction
+                component={Link}
                 className={classes.navAction}
+                to="/notifications"
+                icon={<NotificationsIcon />}
+              />
+              <BottomNavigationAction
+                component={Link}
+                className={classes.navAction}
+                to="/notifications"
                 icon={<MenuIcon />}
               />
             </BottomNavigation>

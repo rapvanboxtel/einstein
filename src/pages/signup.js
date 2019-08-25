@@ -68,8 +68,7 @@ class signup extends Component {
 
     return (
       <Grid container className={classes.form}>
-        <Grid item sm />
-        <Grid item sm>
+        <Grid>
           <img
             src={BackgroundImg}
             alt="signin-backgroundimg"
@@ -147,7 +146,6 @@ class signup extends Component {
             </body2>
           </form>
         </Grid>
-        <Grid item sm />
       </Grid>
     );
   }
