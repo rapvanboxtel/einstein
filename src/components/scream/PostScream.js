@@ -19,24 +19,50 @@ import Fab from "@material-ui/core/Fab";
 
 const styles = theme => ({
   ...theme,
+  postContainer: {
+    padding: '5%'
+  },
+  visibleSeparatorPost: {
+    width: '90%',
+    margin: '0% 5%',
+    height: '1px',
+    backgroundColor: 'rgba(230, 230, 230, 1)',
+    borderWidth: '0px'
+  },
+  postTitle: {
+    padding: '5%'
+  },
+  postContent: {
+    padding: '5%'
+  },
+  sendPostContainer: {
+    width: '90%',
+    backgroundColor: 'white',
+    position: 'absolute',
+    left: '5%',
+    bottom: '0%',
+    paddingTop: '5%',
+    paddingBottom: '5%'
+  },
   submitButton: {
-    position: "relative",
-    float: "right",
-    marginTop: 10
+    float: 'right'
+  },
+  textFieldPost: {
+    width: '100%'
   },
   progressSpinner: {
     position: "absolute"
   },
   closeButton: {
     position: "absolute",
-    left: "91%",
-    top: "6%"
+    right: "2%",
+    top: "2%"
   },
   postButton: {
     position: "fixed",
     bottom: "90px",
     right: "15px"
-  }
+  },
 });
 
 class PostScream extends Component {
@@ -88,8 +114,8 @@ class PostScream extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth
-          maxWidth="sm"
+          className={classes.postContainer}
+          fullScreen 
         >
           <MyButton
             tip=""
@@ -98,37 +124,40 @@ class PostScream extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Post a new scream</DialogTitle>
-          <DialogContent>
+          <DialogTitle className={classes.postTitle}>Create post</DialogTitle>
+          <hr className={classes.visibleSeparatorPost} />
+          <DialogContent className={classes.postContent}>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"
-                label="Post"
+                label=""
                 multiline
-                rows="3"
-                placeholder="Share something with your colleagues"
+                placeholder="What would you like to share?"
                 error={errors.body ? true : false}
                 helperText={errors.body}
-                className={classes.textField}
+                className={classes.textFieldPost}
                 onChange={this.handleChange}
                 fullWidth
+                InputProps={{disableUnderline: true}}
               />
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={classes.submitButton}
-                disabled={loading}
-              >
-                Submit
-                {loading && (
-                  <CircularProgress
-                    size={30}
-                    className={classes.progressSpinner}
-                  />
-                )}
-              </Button>
+              <div className={classes.sendPostContainer}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submitButton}
+                  disabled={loading}
+                >
+                  Post
+                  {loading && (
+                    <CircularProgress
+                      size={30}
+                      className={classes.progressSpinner}
+                    />
+                  )}
+                </Button>
+              </div>
             </form>
           </DialogContent>
         </Dialog>

@@ -87,7 +87,7 @@ export default {
     paddingBottom: '5%'
   },
   commentsContainer: {
-    paddingBottom: '100px'
+    paddingBottom: '75px'
   },
   postComment: {
     width: '100%'
