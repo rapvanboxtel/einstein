@@ -42,7 +42,7 @@ const styles = {
     transform: 'translateX(-50%)',
     bottom: 0,
     width: '100%',
-    maxWidth: "500px",
+    maxWidth: "800px",
     zIndex: "999",
     borderTop: "1px solid #DADDE1",
     height: 70
@@ -108,7 +108,7 @@ class Navbar extends Component {
       <nav>
         {authenticated ? (
           <div>
-            <AppBar style={{width: '100%', maxWidth: '500px', left: '50%', transform: 'translateX(-50%)'}}>
+            <AppBar style={{width: '100%', maxWidth: '800px', left: '50%', transform: 'translateX(-50%)'}}>
               <Toolbar>
                 <Grid>
                   <Avatar

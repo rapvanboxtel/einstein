@@ -27,8 +27,10 @@ const styles = theme => ({
     padding: '5%',
   },
   dialogContainer: {
-    margin: '5%',
-    borderRadius: '20px !important'
+    maxWidth: '700px',
+    width: '90%',
+    height: '92.5%',
+    margin: 'auto auto'
   },
   closeButton: {
     position: "absolute",
@@ -43,6 +45,18 @@ const styles = theme => ({
     textAlign: "center",
     marginTop: 50,
     marginBottom: 50
+  },
+  comment: {
+    width: 'calc(100% - 50px)'
+  },
+  commentImage: {
+    width: 40,
+    height: 40,
+    objectFit: 'cover',
+    borderRadius: '50%'
+  },
+  commentData: {
+    marginLeft: 10
   }
 });
 
@@ -99,7 +113,6 @@ class ScreamDialog extends Component {
     ) : (
       <Grid container>
         <Grid>
-          {/* <span>{likeCount} likes </span> */}
           <span>{likeCount} likes & {commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />

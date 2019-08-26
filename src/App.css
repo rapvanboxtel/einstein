@@ -9,10 +9,12 @@ body {
   height: 100%;
 }
 .appWrapper{
-  width: 100%;
-  max-width: 500px;
+  width: calc(100% - 2px);
+  max-width: 800px;
   margin: 0px auto;
   position: relative;
+  border-left: 1px solid #dadde1;
+  border-right: 1px solid #dadde1;
 }
 .container-login {
   

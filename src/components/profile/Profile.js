@@ -17,7 +17,7 @@ import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import EditIcon from '@material-ui/icons/Edit';
-import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
+import LogoutIcon from '@material-ui/icons/PowerSettingsNew';
 //Redux
 import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
@@ -103,7 +103,7 @@ class Profile extends Component {
               <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
             <MyButton tip="" onClick={this.handleLogout} >
-              <KeyboardReturn color="primary" />
+              <LogoutIcon color="primary" />
             </MyButton>
             <EditDetails />
           </div>

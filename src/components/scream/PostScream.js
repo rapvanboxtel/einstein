@@ -20,7 +20,10 @@ import Fab from "@material-ui/core/Fab";
 const styles = theme => ({
   ...theme,
   postContainer: {
-    padding: '5%'
+    maxWidth: '700px',
+    width: '90%',
+    height: '92.5%',
+    margin: 'auto auto'
   },
   visibleSeparatorPost: {
     width: '90%',
@@ -45,7 +48,9 @@ const styles = theme => ({
     paddingBottom: '5%'
   },
   submitButton: {
-    float: 'right'
+    float: 'right',
+    borderRadius: '30px',
+    padding: '8px 25px'
   },
   textFieldPost: {
     width: '100%'
@@ -61,8 +66,11 @@ const styles = theme => ({
   postButton: {
     position: "fixed",
     bottom: "90px",
-    right: "15px"
+    transform: 'translateX(-144%)'
   },
+  postButtonFix: {
+    float: 'right'
+  }
 });
 
 class PostScream extends Component {
@@ -103,14 +111,16 @@ class PostScream extends Component {
     } = this.props;
     return (
       <Fragment>
-        <Fab
-          onClick={this.handleOpen}
-          color="primary"
-          aria-label="add"
-          className={classes.postButton}
-        >
-          <AddIcon />
-        </Fab>
+        <div className={classes.postButtonFix}>
+          <Fab
+            onClick={this.handleOpen}
+            color="primary"
+            aria-label="add"
+            className={classes.postButton}
+          >
+            <AddIcon />
+          </Fab>
+        </div>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -145,6 +155,7 @@ class PostScream extends Component {
                 <Button
                   type="submit"
                   variant="contained"
+                  size="medium"
                   color="primary"
                   className={classes.submitButton}
                   disabled={loading}
